@@ -31,17 +31,19 @@ public class Main {
                     System.out.println("Please specify the id of the file you want to open\n");
                     int id = sc.nextInt();
                     Paint fileObj = file.openFile(id);
-                    fileObj.displayCanvas();
-                    System.out.println("Do you want to draw in the current file?\n\nPress Q - Quit\nPress Y-Yes\nPress N or Anyother key except Q - No");
-                    response = sc.next().charAt(0);
+                    if(fileObj!=null) {
+                        fileObj.displayCanvas();
+                        System.out.println("Do you want to draw in the current file?\n\nPress Q - Quit\nPress Y-Yes\nPress N or Anyother key except Q - No");
+                        response = sc.next().charAt(0);
 
-                    if (response == 'q' || response == 'Q') break; //to quit application
+                        if (response == 'q' || response == 'Q') break; //to quit application
 
-                    if (response == 'y' || response == 'Y') {
-                        DrawInExistingFile drawInCurrFile = new DrawInExistingFile(fileObj, id);
-                        drawInCurrFile.draw();
-                        drawInCurrFile.delete();
-                        drawInCurrFile.save();
+                        if (response == 'y' || response == 'Y') {
+                            DrawInExistingFile drawInCurrFile = new DrawInExistingFile(fileObj, id);
+                            drawInCurrFile.draw();
+                            drawInCurrFile.delete();
+                            drawInCurrFile.save();
+                        }
                     }
                 }
             }

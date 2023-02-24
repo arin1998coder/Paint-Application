@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Open {
@@ -9,8 +10,11 @@ public class Open {
         try {
             myCanvas = (Paint) SerializationUtil.deserialize(fileName);
 
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+        catch (IOException e){
+            System.out.println("Specified File is not Found");
         }
 
         return myCanvas;
